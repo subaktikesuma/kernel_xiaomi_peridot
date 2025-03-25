@@ -22,7 +22,7 @@ jobs:
       with:
         arch: arm64
         compiler: clang/14
-        defconfig: defconfig
+        defconfig: gki_defconfig
         image: Image.gz-dtb
 
     - name: Upload Kernel and Module
