@@ -1,4 +1,4 @@
-name: Kernel Build
+name: Mem Kernel Build
 
 on:
   workflow_dispatch:
@@ -12,7 +12,7 @@ jobs:
 
     - name: Set up MemKernel as a module (M-OUT) with specified name
       run: |
-        curl -LSs "https://raw.githubusercontent.com/subaktikesuma/MemKernel/main/kernel/setup.sh" | bash -s M dex
+        curl -LSs "https://raw.githubusercontent.com/subaktikesuma/MemKernel/main/kernel/setup.sh" | bash -s M TRXKernel
 
     - name: Android kernel build
       uses: lemniskett/android-kernel-actions@master
@@ -21,8 +21,8 @@ jobs:
         NAME: peridot
       with:
         arch: arm64
-        compiler: clang/14
-        defconfig: gki_defconfig
+        compiler: gcc/12
+        defconfig: peridot_defconfig
         image: Image.gz-dtb
 
     - name: Upload Kernel and Module
